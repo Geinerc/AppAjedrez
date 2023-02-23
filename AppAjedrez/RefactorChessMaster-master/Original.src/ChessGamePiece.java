@@ -107,21 +107,13 @@ public abstract class ChessGamePiece{
     }
     // ----------------------------------------------------------
     /**
-     * Generates and returns a list of Strings that represent possible move
-     * locations for the piece, in the following format: ["xloc_0,yloc_0",
-     * "xloc_1,yloc_1", ...] It is recommended to use the helper methods below
-     * to implement this method. (calculateNorth, calculateWest, ...)
-     *
      * @param board
-     *            the board to check moves on
      * @return ArrayList<String> the list of moves
      */
     protected abstract ArrayList<String> calculatePossibleMoves(
         ChessGameBoard board );
     /**
-     * Calculates and returns moves in the south direction relative to this
-     * piece.
-     *
+
      * @param board
      *            the board to calculate the moves on
      * @param numMoves
@@ -153,9 +145,7 @@ public abstract class ChessGamePiece{
     }
     // ----------------------------------------------------------
     /**
-     * Calculates and returns moves in the north direction relative to this
-     * piece.
-     *
+
      * @param board
      *            the board to calculate the moves on
      * @param numMoves
@@ -187,9 +177,7 @@ public abstract class ChessGamePiece{
     }
     // ----------------------------------------------------------
     /**
-     * Calculates and returns moves in the east direction relative to this
-     * piece.
-     *
+
      * @param board
      *            the board to calculate the moves on
      * @param numMoves
@@ -221,9 +209,7 @@ public abstract class ChessGamePiece{
     }
     // ----------------------------------------------------------
     /**
-     * Calculates and returns moves in the west direction relative to this
-     * piece.
-     *
+
      * @param board
      *            the board to calculate the moves on
      * @param numMoves
@@ -255,9 +241,6 @@ public abstract class ChessGamePiece{
     }
     // ----------------------------------------------------------
     /**
-     * Calculates and returns moves in the north-west direction relative to this
-     * piece.
-     *
      * @param board
      *            the board to calculate the moves on
      * @param numMoves
@@ -292,8 +275,7 @@ public abstract class ChessGamePiece{
     }
     // ----------------------------------------------------------
     /**
-     * Calculates and returns moves in the north-east direction relative to this
-     * piece.
+iece.
      *
      * @param board
      *            the board to calculate the moves on
@@ -329,9 +311,7 @@ public abstract class ChessGamePiece{
     }
     // ----------------------------------------------------------
     /**
-     * Calculates and returns moves in the south-west direction relative to this
-     * piece.
-     *
+
      * @param board
      *            the board to calculate the moves on
      * @param numMoves
