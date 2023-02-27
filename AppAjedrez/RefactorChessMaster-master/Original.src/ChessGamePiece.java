@@ -710,9 +710,29 @@ iece.
      *
      * @return String the string representation
      */
-    @Override
-    public String toString(){
-        return this.getClass().toString().substring( 6 ) + " @ (" + pieceRow
-            + ", " + pieceColumn + ")";
+    public abstract class Piece {
+        protected int pieceRow;
+        protected int pieceColumn;
+    
+        public Piece(int row, int column) {
+            this.pieceRow = row;
+            this.pieceColumn = column;
+        }
+    
+        public abstract String toString();
     }
-}
+    
+    public class PieceDecorator extends Piece {
+        private Piece decoratedPiece;
+    
+        public PieceDecorator(Piece decoratedPiece, int row, int column) {
+            super(row, column);
+            this.decoratedPiece = decoratedPiece;
+        }
+    
+        @Override
+        public String toString() {
+            return decoratedPiece.toString() + " @ (" + pieceRow + ", " + pieceColumn + ")";
+        }
+    }
+    
