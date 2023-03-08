@@ -1,18 +1,6 @@
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
-// -------------------------------------------------------------------------
-/**
- * Abstract class that is used to represent a game piece on the chess board.
- * Classes to extend this piece are Rook, Bishop, Knight, Queen, King and Pawn.
- * Also contains a large number of methods to determine information about cells
- * around this piece.
- *
- * @author Ben Katz (bakatz)
- * @author Myles David II (davidmm2)
- * @author Danielle Bushrow (dbushrow)
- * @version 2010.11.17
- */
  abstract class ChessGamePiece{
     private boolean             skipMoveGeneration;
     private int                 pieceColor;
