@@ -99,8 +99,10 @@ public class ChessMenuBar
             possibleFrame = possibleFrame.getParent();
         }
         JFrame frame = (JFrame)possibleFrame;
-        frame.setVisible( false );
-        frame.dispose();
+        if (frame != null) { // Verificar si frame es nulo
+            frame.setVisible( false );
+            frame.dispose();
+        }
     }
     /**
      * Takes an appropriate action if the toggle graveyard button is clicked.

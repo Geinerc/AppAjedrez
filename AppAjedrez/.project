@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>RefactorChessMaster-master</name>
+	<name>AppAjedrez_RefactorChessMaster-master</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -16,7 +16,7 @@
 	</natures>
 	<filteredResources>
 		<filter>
-			<id>1677111870448</id>
+			<id>1677111870444</id>
 			<name></name>
 			<type>30</type>
 			<matcher>

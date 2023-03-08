@@ -13,7 +13,7 @@ import javax.swing.ImageIcon;
  * @author Danielle Bushrow (dbushrow)
  * @version 2010.11.17
  */
-public abstract class ChessGamePiece{
+ abstract class ChessGamePiece{
     private boolean             skipMoveGeneration;
     private int                 pieceColor;
     private ImageIcon           pieceImage;
@@ -55,7 +55,7 @@ public abstract class ChessGamePiece{
      * @param pieceColor
      *            either GamePiece.WHITE, BLACK, or UNASSIGNED
      */
-    public ChessGamePiece(
+    protected ChessGamePiece(
         ChessGameBoard board,
         int row,
         int col,
@@ -87,7 +87,7 @@ public abstract class ChessGamePiece{
      * @param pieceColor
      *            either GamePiece.BLACK, WHITE, or UNASSIGNED
      */
-    public ChessGamePiece(
+    protected ChessGamePiece(
         ChessGameBoard board,
         int row,
         int col,
@@ -107,13 +107,21 @@ public abstract class ChessGamePiece{
     }
     // ----------------------------------------------------------
     /**
+     * Generates and returns a list of Strings that represent possible move
+     * locations for the piece, in the following format: ["xloc_0,yloc_0",
+     * "xloc_1,yloc_1", ...] It is recommended to use the helper methods below
+     * to implement this method. (calculateNorth, calculateWest, ...)
+     *
      * @param board
+     *            the board to check moves on
      * @return ArrayList<String> the list of moves
      */
     protected abstract ArrayList<String> calculatePossibleMoves(
         ChessGameBoard board );
     /**
-
+     * Calculates and returns moves in the south direction relative to this
+     * piece.
+     *
      * @param board
      *            the board to calculate the moves on
      * @param numMoves
@@ -145,7 +153,9 @@ public abstract class ChessGamePiece{
     }
     // ----------------------------------------------------------
     /**
-
+     * Calculates and returns moves in the north direction relative to this
+     * piece.
+     *
      * @param board
      *            the board to calculate the moves on
      * @param numMoves
@@ -177,7 +187,9 @@ public abstract class ChessGamePiece{
     }
     // ----------------------------------------------------------
     /**
-
+     * Calculates and returns moves in the east direction relative to this
+     * piece.
+     *
      * @param board
      *            the board to calculate the moves on
      * @param numMoves
@@ -209,7 +221,9 @@ public abstract class ChessGamePiece{
     }
     // ----------------------------------------------------------
     /**
-
+     * Calculates and returns moves in the west direction relative to this
+     * piece.
+     *
      * @param board
      *            the board to calculate the moves on
      * @param numMoves
@@ -241,6 +255,9 @@ public abstract class ChessGamePiece{
     }
     // ----------------------------------------------------------
     /**
+     * Calculates and returns moves in the north-west direction relative to this
+     * piece.
+     *
      * @param board
      *            the board to calculate the moves on
      * @param numMoves
@@ -262,7 +279,7 @@ public abstract class ChessGamePiece{
                 }
                 else if ( isEnemy( board, pieceRow - i, pieceColumn - i ) ){
                     moves.add( ( pieceRow - i ) + "," + ( pieceColumn - i ) );
-                    count++;
+               
                     break;
                 }
                 else
@@ -275,7 +292,8 @@ public abstract class ChessGamePiece{
     }
     // ----------------------------------------------------------
     /**
-iece.
+     * Calculates and returns moves in the north-east direction relative to this
+     * piece.
      *
      * @param board
      *            the board to calculate the moves on
@@ -294,11 +312,11 @@ iece.
                     && ( board.getCell( pieceRow - i,
                         pieceColumn + i).getPieceOnSquare() == null ) ){
                     moves.add( ( pieceRow - i ) + "," + ( pieceColumn + i ) );
-                    count++;
+           
                 }
                 else if ( isEnemy( board, pieceRow - i, pieceColumn + i ) ){
                     moves.add( ( pieceRow - i ) + "," + ( pieceColumn + i ) );
-                    count++;
+               
                     break;
                 }
                 else
@@ -311,7 +329,9 @@ iece.
     }
     // ----------------------------------------------------------
     /**
-
+     * Calculates and returns moves in the south-west direction relative to this
+     * piece.
+     *
      * @param board
      *            the board to calculate the moves on
      * @param numMoves
@@ -329,11 +349,11 @@ iece.
                     && ( board.getCell( pieceRow + i,
                         pieceColumn - i ).getPieceOnSquare() == null ) ){
                     moves.add( ( pieceRow + i ) + "," + ( pieceColumn - i ) );
-                    count++;
+    
                 }
                 else if ( isEnemy( board, pieceRow + i, pieceColumn - i ) ){
                     moves.add( ( pieceRow + i ) + "," + ( pieceColumn - i ) );
-                    count++;
+          
                     break;
                 }
                 else
@@ -366,11 +386,11 @@ iece.
                     && ( board.getCell( pieceRow + i,
                         pieceColumn + i ).getPieceOnSquare() == null ) ){
                     moves.add( ( pieceRow + i ) + "," + ( pieceColumn + i ) );
-                    count++;
+     
                 }
                 else if ( isEnemy( board, pieceRow + i, pieceColumn + i ) ){
                     moves.add( ( pieceRow + i ) + "," + ( pieceColumn + i ) );
-                    count++;
+              
                     break;
                 }
                 else
@@ -710,29 +730,9 @@ iece.
      *
      * @return String the string representation
      */
-    public abstract class Piece {
-        protected int pieceRow;
-        protected int pieceColumn;
-    
-        public Piece(int row, int column) {
-            this.pieceRow = row;
-            this.pieceColumn = column;
-        }
-    
-        public abstract String toString();
+    @Override
+    public String toString(){
+        return this.getClass().toString().substring( 6 ) + " @ (" + pieceRow
+            + ", " + pieceColumn + ")";
     }
-    
-    public class PieceDecorator extends Piece {
-        private Piece decoratedPiece;
-    
-        public PieceDecorator(Piece decoratedPiece, int row, int column) {
-            super(row, column);
-            this.decoratedPiece = decoratedPiece;
-        }
-    
-        @Override
-        public String toString() {
-            return decoratedPiece.toString() + " @ (" + pieceRow + ", " + pieceColumn + ")";
-        }
-    }
-    
+}
